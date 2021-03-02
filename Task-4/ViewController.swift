@@ -8,23 +8,28 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var num: Int = 0
+    private var num: Int = 0
+
     @IBOutlet private weak var label: UILabel!
     @IBOutlet private weak var plusButton: UIButton!
     @IBOutlet private weak var clearButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        label.text = "\(num)"
+        updateNumberLabel()
     }
 
     @IBAction func plus(_ sender: Any) {
-        self.num = num + 1
-        self.label.text = "\(num)"
+        num += 1
+        updateNumberLabel()
     }
     
     @IBAction func clear(_ sender: Any) {
-        self.num = 0
-        self.label.text = "\(num)"
+        num = 0
+        updateNumberLabel()
+    }
+
+    private func updateNumberLabel() {
+        label.text = "\(num)"
     }
 }
-
